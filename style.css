@@ -1,0 +1,242 @@
+/* ===== Tournoi de tennis - feuille de style commune ===== */
+:root {
+  --vert: #1d4a38;
+  --vert-fonce: #12301f;
+  --craie: #f6f5ee;
+  --balle: #d8e43a;
+  --texte: #1c2a24;
+  --gris: #5c6b63;
+  --ligne: #d9dccf;
+  --titre: "Bricolage Grotesque", "Trebuchet MS", Arial, sans-serif;
+  --corps: "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--corps);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--texte);
+  background: var(--craie);
+}
+
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--balle); outline-offset: 3px; }
+
+/* ----- En-tête et navigation ----- */
+.entete {
+  background: var(--vert-fonce);
+  color: var(--craie);
+}
+.entete .conteneur {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.logo {
+  font-family: var(--titre);
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+.logo::before {
+  content: "";
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--balle);
+  vertical-align: -0.05em;
+}
+nav ul { display: flex; gap: 1.5rem; list-style: none; }
+nav a {
+  font-family: var(--titre);
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  border-bottom: 3px solid transparent;
+}
+nav a:hover,
+nav a[aria-current="page"] { border-bottom-color: var(--balle); }
+
+/* ----- Mise en page ----- */
+.conteneur { width: min(100% - 2.5rem, 62rem); margin-inline: auto; }
+
+/* ----- Bandeau d'ouverture : un court de tennis tracé à la craie ----- */
+.hero {
+  background: var(--vert);
+  color: var(--craie);
+  padding: 3rem 0;
+}
+.court {
+  position: relative;
+  border: 3px solid var(--craie);
+  padding: 3.5rem clamp(1.5rem, 5vw, 4rem);
+  background:
+    linear-gradient(var(--craie), var(--craie)) center / 3px 100% no-repeat,   /* filet */
+    linear-gradient(var(--craie), var(--craie)) left 30% top 0 / 3px 100% no-repeat,
+    linear-gradient(var(--craie), var(--craie)) left 0 top 50% / 30% 3px no-repeat;
+}
+.court .texte {
+  position: relative;
+  max-width: 34rem;
+  background: var(--vert);
+  padding: 1rem 1.5rem 1.25rem 0;
+}
+.hero h1 {
+  font-family: var(--titre);
+  font-weight: 800;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+.hero p { margin-top: 1rem; font-size: 1.2rem; max-width: 30rem; }
+.bouton {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--titre);
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--vert-fonce);
+  background: var(--balle);
+  border-radius: 999px;
+}
+.bouton:hover { background: #e8f25a; }
+
+/* ----- Sections ----- */
+main section { padding: 3rem 0 1rem; }
+h2 {
+  font-family: var(--titre);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--vert);
+  margin-bottom: 1rem;
+}
+h3 { font-family: var(--titre); font-size: 1.25rem; margin-bottom: 0.3rem; }
+p + p { margin-top: 1rem; }
+.texte-court { max-width: 40rem; }
+
+.grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.bloc {
+  padding: 0.25rem 0 0.5rem 1.25rem;
+  border-left: 4px solid var(--balle);
+}
+.bloc p { color: var(--gris); font-size: 1rem; }
+
+/* ----- Fiche de présentation ----- */
+.profil {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+.photo {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 1rem;
+  font-family: var(--titre);
+  color: var(--gris);
+  border: 3px dashed var(--ligne);
+  border-radius: 50%;
+}
+dl.fiche { margin-top: 1rem; }
+dl.fiche div {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--ligne);
+}
+dt { font-family: var(--titre); font-weight: 600; color: var(--vert); }
+
+/* ----- Chiffres clés ----- */
+.chiffres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
+  margin-top: 1.5rem;
+}
+.chiffres strong {
+  display: block;
+  font-family: var(--titre);
+  font-size: 2.4rem;
+  line-height: 1;
+  color: var(--vert);
+}
+.chiffres span { color: var(--gris); font-size: 0.95rem; }
+
+/* ----- Programme : une vraie chronologie ----- */
+.jour { margin-top: 2.5rem; }
+.jour > h2 { margin-bottom: 1.5rem; }
+.chrono { list-style: none; position: relative; margin-left: 0.6rem; }
+.chrono::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.5rem; bottom: 0.5rem;
+  width: 3px;
+  background: var(--ligne);
+}
+.chrono li {
+  position: relative;
+  padding: 0 0 1.5rem 2rem;
+}
+.chrono li::before {
+  content: "";
+  position: absolute;
+  left: -0.5rem; top: 0.45rem;
+  width: 1.1rem; height: 1.1rem;
+  border-radius: 50%;
+  background: var(--balle);
+  border: 3px solid var(--vert);
+}
+.heure {
+  font-family: var(--titre);
+  font-weight: 700;
+  color: var(--vert);
+}
+.chrono p { color: var(--gris); font-size: 1rem; }
+
+/* ----- Pied de page ----- */
+.pied {
+  margin-top: 4rem;
+  padding: 1.5rem 0;
+  background: var(--vert-fonce);
+  color: var(--craie);
+  font-size: 0.95rem;
+}
+
+/* ----- Mobile ----- */
+@media (max-width: 40rem) {
+  .profil {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+}  .photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--ligne);
+}
+}
+}
+}
+  dl.fiche div { grid-template-columns: 1fr; gap: 0; }
+  .court { padding: 2rem 1.25rem; }
+}
